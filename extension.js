@@ -566,11 +566,13 @@ var Timepp = GObject.registerClass({
                 }
             }
 
-            St.ThemeContext.get_for_stage(global.stage).get_theme().load_stylesheet(this.custom_stylesheet);
+            if (this.custom_stylesheet) {
+                St.ThemeContext.get_for_stage(global.stage).get_theme().load_stylesheet(this.custom_stylesheet);
 
-            // reload theme
-            Main.reloadThemeResource();
-            Main.loadTheme();
+                // reload theme
+                Main.reloadThemeResource();
+                Main.loadTheme();
+	    }
 
             Mainloop.idle_add(() => this.theme_change_signal_block = false);
         }
