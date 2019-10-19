@@ -541,7 +541,7 @@ var Timepp = GObject.registerClass({
 
         _on_theme_changed() {
             if (this.custom_stylesheet) this._unload_stylesheet();
-            this._load_stylesheet();
+            Mainloop.idle_add(() => this._load_stylesheet());
         }
 
         _load_stylesheet() {
